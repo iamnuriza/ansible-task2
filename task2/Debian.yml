@@ -1,0 +1,26 @@
+- name: install apache
+  apt:
+    name: apache2
+    state: latest
+- name: start and enable apache
+  systemd:
+    state: started
+    enabled: yes
+    name: apache2
+- name: download file
+  get_url:
+    url: https://www.free-css.com/assets/files/free-css-templates/download/page291/drool.zip
+    dest: /tmp/drool.zip
+- name: isntall unzip
+  apt:
+    name: unzip
+    state: latest
+- name: extract /tmp/drool.zip
+  unarchive:
+    src: /tmp/drool.zip
+    dest: /tmp/
+    remote_src: yes
+- name: move files
+  shell: "mv /tmp/drool-html/* /var/www/html/"
+  args:
+    creates: /var/www/html/contact.html

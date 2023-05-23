@@ -1,0 +1,5 @@
+[centos]
+CentOS7     ansible_host=143.244.168.22
+
+[ubuntu]
+UBUNTU     ansible_host=69.55.61.69
